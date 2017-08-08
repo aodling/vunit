@@ -13,6 +13,7 @@ use ieee.numeric_std.all;
 use std.textio.all;
 use work.checker_pkg.all;
 use work.logger_pkg.all;
+use work.log_levels_pkg.all;
 
 package check_pkg is
   signal check_enabled : std_logic := '1';
@@ -36,7 +37,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic;
     constant msg               : in string                 := check_result_tag_c & ".";
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -46,7 +47,7 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  boolean;
     constant msg       : in  string                 := check_result_tag_c & ".";
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
@@ -54,14 +55,14 @@ package check_pkg is
     checker            :    checker_t;
     constant expr      : in boolean;
     constant msg       : in string                 := check_result_tag_c & ".";
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
   procedure check(
     constant expr      : in boolean;
     constant msg       : in string                 := check_result_tag_c & ".";
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
@@ -69,14 +70,14 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  boolean;
     constant msg       : in  string                 := check_result_tag_c & ".";
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
   impure function check(
     constant expr      : in boolean;
     constant msg       : in string                 := check_result_tag_c & ".";
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "")
     return boolean;
@@ -86,7 +87,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic;
     constant msg               : in string                 := check_result_tag_c & ".";
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -111,13 +112,13 @@ package check_pkg is
   procedure check_failed(
     checker            :    checker_t;
     constant msg       : in string                 := check_result_tag_c & ".";
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
   procedure check_failed(
     constant msg       : in string                 := check_result_tag_c & ".";
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
@@ -130,7 +131,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic;
     constant msg               : in string                 := check_result_tag_c & ".";
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -140,7 +141,7 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  boolean;
     constant msg       : in  string                 := check_result_tag_c & ".";
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
@@ -148,14 +149,14 @@ package check_pkg is
     checker            :    checker_t;
     constant expr      : in boolean;
     constant msg       : in string                 := check_result_tag_c & ".";
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
   procedure check_true(
     constant expr      : in boolean;
     constant msg       : in string                 := check_result_tag_c & ".";
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
@@ -163,14 +164,14 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  boolean;
     constant msg       : in  string                 := check_result_tag_c & ".";
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
   impure function check_true(
     constant expr      : in boolean;
     constant msg       : in string                 := check_result_tag_c & ".";
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "")
     return boolean;
@@ -180,7 +181,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic;
     constant msg               : in string                 := check_result_tag_c & ".";
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -192,7 +193,7 @@ package check_pkg is
     checker            :    checker_t;
     constant expr      : in boolean;
     constant msg       : in string                 := check_result_tag_c & ".";
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
@@ -201,7 +202,7 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  boolean;
     constant msg       : in  string                 := check_result_tag_c & ".";
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
@@ -211,7 +212,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic;
     constant msg               : in string                 := check_result_tag_c & ".";
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -219,7 +220,7 @@ package check_pkg is
   procedure check_false(
     constant expr      : in boolean;
     constant msg       : in string                 := check_result_tag_c & ".";
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
@@ -227,14 +228,14 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  boolean;
     constant msg       : in  string                 := check_result_tag_c & ".";
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
   impure function check_false(
     constant expr      : in boolean;
     constant msg       : in string                 := check_result_tag_c & ".";
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "")
     return boolean;
@@ -244,7 +245,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic;
     constant msg               : in string                 := check_result_tag_c & ".";
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -259,7 +260,7 @@ package check_pkg is
     signal antecedent_expr     : in std_logic;
     signal consequent_expr     : in std_logic;
     constant msg               : in string                 := check_result_tag_c & ".";
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -270,7 +271,7 @@ package check_pkg is
     signal antecedent_expr     : in std_logic;
     signal consequent_expr     : in std_logic;
     constant msg               : in string                 := check_result_tag_c & ".";
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -280,7 +281,7 @@ package check_pkg is
     constant antecedent_expr : in boolean;
     constant consequent_expr : in boolean;
     constant msg             : in string                 := check_result_tag_c & ".";
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural                := 0;
     constant file_name       : in string                 := "");
 
@@ -290,7 +291,7 @@ package check_pkg is
     constant antecedent_expr : in  boolean;
     constant consequent_expr : in  boolean;
     constant msg             : in  string                 := check_result_tag_c & ".";
-    constant level           : in  log_level_or_default_t := no_level;
+    constant level           : in  log_level_t := null_log_level;
     constant line_num        : in  natural                := 0;
     constant file_name       : in  string                 := "");
 
@@ -298,7 +299,7 @@ package check_pkg is
     constant antecedent_expr : in boolean;
     constant consequent_expr : in boolean;
     constant msg             : in string                 := check_result_tag_c & ".";
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural                := 0;
     constant file_name       : in string                 := "");
 
@@ -307,7 +308,7 @@ package check_pkg is
     constant antecedent_expr : in  boolean;
     constant consequent_expr : in  boolean;
     constant msg             : in  string                 := check_result_tag_c & ".";
-    constant level           : in  log_level_or_default_t := no_level;
+    constant level           : in  log_level_t := null_log_level;
     constant line_num        : in  natural                := 0;
     constant file_name       : in  string                 := "");
 
@@ -315,7 +316,7 @@ package check_pkg is
     constant antecedent_expr : in boolean;
     constant consequent_expr : in boolean;
     constant msg             : in string                 := check_result_tag_c & ".";
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural                := 0;
     constant file_name       : in string                 := "")
     return boolean;
@@ -331,7 +332,7 @@ package check_pkg is
     signal end_event           : in std_logic;
     signal expr                : in std_logic_vector;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -343,7 +344,7 @@ package check_pkg is
     signal end_event           : in std_logic;
     signal expr                : in std_logic_vector;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -356,7 +357,7 @@ package check_pkg is
     signal end_event           : in std_logic;
     signal expr                : in std_logic;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -368,7 +369,7 @@ package check_pkg is
     signal end_event           : in std_logic;
     signal expr                : in std_logic;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -382,7 +383,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic_vector;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -392,7 +393,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic_vector;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -401,7 +402,7 @@ package check_pkg is
     checker            :    checker_t;
     constant expr      : in std_logic_vector;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
@@ -410,14 +411,14 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  std_logic_vector;
     constant msg       : in  string                 := check_result_tag_c;
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
   procedure check_not_unknown(
     constant expr      : in std_logic_vector;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
@@ -425,14 +426,14 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  std_logic_vector;
     constant msg       : in  string                 := check_result_tag_c;
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
   impure function check_not_unknown(
     constant expr      : in std_logic_vector;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "")
     return boolean;
@@ -443,7 +444,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -453,7 +454,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -462,7 +463,7 @@ package check_pkg is
     checker            :    checker_t;
     constant expr      : in std_logic;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
@@ -471,14 +472,14 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  std_logic;
     constant msg       : in  string                 := check_result_tag_c;
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
   procedure check_not_unknown(
     constant expr      : in std_logic;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
@@ -486,14 +487,14 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  std_logic;
     constant msg       : in  string                 := check_result_tag_c;
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
   impure function check_not_unknown(
     constant expr      : in std_logic;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "")
     return boolean;
@@ -507,7 +508,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic_vector;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -517,7 +518,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic_vector;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -527,7 +528,7 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  std_logic_vector;
     constant msg       : in  string                 := check_result_tag_c;
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
@@ -535,14 +536,14 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  std_logic_vector;
     constant msg       : in  string                 := check_result_tag_c;
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
   impure function check_zero_one_hot(
     constant expr      : in std_logic_vector;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "")
     return boolean;
@@ -551,14 +552,14 @@ package check_pkg is
     checker            :    checker_t;
     constant expr      : in std_logic_vector;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
   procedure check_zero_one_hot(
     constant expr      : in std_logic_vector;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
@@ -571,7 +572,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic_vector;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -581,7 +582,7 @@ package check_pkg is
     signal en                  : in std_logic;
     signal expr                : in std_logic_vector;
     constant msg               : in string                 := check_result_tag_c;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -591,7 +592,7 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  std_logic_vector;
     constant msg       : in  string                 := check_result_tag_c;
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
@@ -599,14 +600,14 @@ package check_pkg is
     variable pass      : out boolean;
     constant expr      : in  std_logic_vector;
     constant msg       : in  string                 := check_result_tag_c;
-    constant level     : in  log_level_or_default_t := no_level;
+    constant level     : in  log_level_t := null_log_level;
     constant line_num  : in  natural                := 0;
     constant file_name : in  string                 := "");
 
   impure function check_one_hot(
     constant expr      : in std_logic_vector;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "")
     return boolean;
@@ -615,14 +616,14 @@ package check_pkg is
     checker            :    checker_t;
     constant expr      : in std_logic_vector;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
   procedure check_one_hot(
     constant expr      : in std_logic_vector;
     constant msg       : in string                 := check_result_tag_c;
-    constant level     : in log_level_or_default_t := no_level;
+    constant level     : in log_level_t := null_log_level;
     constant line_num  : in natural                := 0;
     constant file_name : in string                 := "");
 
@@ -639,7 +640,7 @@ package check_pkg is
     constant num_cks             : in positive               := 1;
     constant allow_overlapping   : in boolean                := true;
     constant allow_missing_start : in boolean                := true;
-    constant level               : in log_level_or_default_t := no_level;
+    constant level               : in log_level_t := null_log_level;
     constant active_clock_edge   : in edge_t                 := rising_edge;
     constant line_num            : in natural                := 0;
     constant file_name           : in string                 := "");
@@ -653,7 +654,7 @@ package check_pkg is
     constant num_cks             : in positive               := 1;
     constant allow_overlapping   : in boolean                := true;
     constant allow_missing_start : in boolean                := true;
-    constant level               : in log_level_or_default_t := no_level;
+    constant level               : in log_level_t := null_log_level;
     constant active_clock_edge   : in edge_t                 := rising_edge;
     constant line_num            : in natural                := 0;
     constant file_name           : in string                 := "");
@@ -668,7 +669,7 @@ package check_pkg is
     signal event_sequence      : in std_logic_vector;
     constant msg               : in string                 := check_result_tag_c;
     constant trigger_event     : in trigger_event_t        := penultimate;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -679,7 +680,7 @@ package check_pkg is
     signal event_sequence      : in std_logic_vector;
     constant msg               : in string                 := check_result_tag_c;
     constant trigger_event     : in trigger_event_t        := penultimate;
-    constant level             : in log_level_or_default_t := no_level;
+    constant level             : in log_level_t := null_log_level;
     constant active_clock_edge : in edge_t                 := rising_edge;
     constant line_num          : in natural                := 0;
     constant file_name         : in string                 := "");
@@ -691,7 +692,7 @@ package check_pkg is
     checker              :    checker_t;
     constant expr        : in boolean;
     constant msg         : in string                 := check_result_tag_c;
-    constant level       : in log_level_or_default_t := no_level;
+    constant level       : in log_level_t := null_log_level;
     constant context_msg : in string                 := "";
     constant line_num    : in natural                := 0;
     constant file_name   : in string                 := "");
@@ -701,7 +702,7 @@ package check_pkg is
     variable pass        : out boolean;
     constant expr        : in  boolean;
     constant msg         : in  string                 := check_result_tag_c;
-    constant level       : in  log_level_or_default_t := no_level;
+    constant level       : in  log_level_t := null_log_level;
     constant context_msg : in  string                 := "";
     constant line_num    : in  natural                := 0;
     constant file_name   : in  string                 := "");
@@ -709,7 +710,7 @@ package check_pkg is
   procedure check_relation(
     constant expr        : in boolean;
     constant msg         : in string                 := check_result_tag_c;
-    constant level       : in log_level_or_default_t := no_level;
+    constant level       : in log_level_t := null_log_level;
     constant context_msg : in string                 := "";
     constant line_num    : in natural                := 0;
     constant file_name   : in string                 := "");
@@ -718,7 +719,7 @@ package check_pkg is
     variable pass        : out boolean;
     constant expr        : in  boolean;
     constant msg         : in  string                 := check_result_tag_c;
-    constant level       : in  log_level_or_default_t := no_level;
+    constant level       : in  log_level_t := null_log_level;
     constant context_msg : in  string                 := "";
     constant line_num    : in  natural                := 0;
     constant file_name   : in  string                 := "");
@@ -726,7 +727,7 @@ package check_pkg is
   impure function check_relation(
     constant expr        : in boolean;
     constant msg         : in string                 := check_result_tag_c;
-    constant level       : in log_level_or_default_t := no_level;
+    constant level       : in log_level_t := null_log_level;
     constant context_msg : in string                 := "";
     constant line_num    : in natural                := 0;
     constant file_name   : in string                 := "")
@@ -736,7 +737,7 @@ package check_pkg is
     checker              :    checker_t;
     constant expr        : in std_ulogic;
     constant msg         : in string                 := check_result_tag_c;
-    constant level       : in log_level_or_default_t := no_level;
+    constant level       : in log_level_t := null_log_level;
     constant context_msg : in string                 := "";
     constant line_num    : in natural                := 0;
     constant file_name   : in string                 := "");
@@ -746,7 +747,7 @@ package check_pkg is
     variable pass        : out boolean;
     constant expr        : in  std_ulogic;
     constant msg         : in  string                 := check_result_tag_c;
-    constant level       : in  log_level_or_default_t := no_level;
+    constant level       : in  log_level_t := null_log_level;
     constant context_msg : in  string                 := "";
     constant line_num    : in  natural                := 0;
     constant file_name   : in  string                 := "");
@@ -754,7 +755,7 @@ package check_pkg is
   procedure check_relation(
     constant expr        : in std_ulogic;
     constant msg         : in string                 := check_result_tag_c;
-    constant level       : in log_level_or_default_t := no_level;
+    constant level       : in log_level_t := null_log_level;
     constant context_msg : in string                 := "";
     constant line_num    : in natural                := 0;
     constant file_name   : in string                 := "");
@@ -763,7 +764,7 @@ package check_pkg is
     variable pass        : out boolean;
     constant expr        : in  std_ulogic;
     constant msg         : in  string                 := check_result_tag_c;
-    constant level       : in  log_level_or_default_t := no_level;
+    constant level       : in  log_level_t := null_log_level;
     constant context_msg : in  string                 := "";
     constant line_num    : in  natural                := 0;
     constant file_name   : in  string                 := "");
@@ -771,7 +772,7 @@ package check_pkg is
   impure function check_relation(
     constant expr        : in std_ulogic;
     constant msg         : in string                 := check_result_tag_c;
-    constant level       : in log_level_or_default_t := no_level;
+    constant level       : in log_level_t := null_log_level;
     constant context_msg : in string                 := "";
     constant line_num    : in natural                := 0;
     constant file_name   : in string                 := "")
@@ -781,7 +782,7 @@ package check_pkg is
     checker              :    checker_t;
     constant expr        : in bit;
     constant msg         : in string                 := check_result_tag_c;
-    constant level       : in log_level_or_default_t := no_level;
+    constant level       : in log_level_t := null_log_level;
     constant context_msg : in string                 := "";
     constant line_num    : in natural                := 0;
     constant file_name   : in string                 := "");
@@ -791,7 +792,7 @@ package check_pkg is
     variable pass        : out boolean;
     constant expr        : in  bit;
     constant msg         : in  string                 := check_result_tag_c;
-    constant level       : in  log_level_or_default_t := no_level;
+    constant level       : in  log_level_t := null_log_level;
     constant context_msg : in  string                 := "";
     constant line_num    : in  natural                := 0;
     constant file_name   : in  string                 := "");
@@ -799,7 +800,7 @@ package check_pkg is
   procedure check_relation(
     constant expr        : in bit;
     constant msg         : in string                 := check_result_tag_c;
-    constant level       : in log_level_or_default_t := no_level;
+    constant level       : in log_level_t := null_log_level;
     constant context_msg : in string                 := "";
     constant line_num    : in natural                := 0;
     constant file_name   : in string                 := "");
@@ -808,7 +809,7 @@ package check_pkg is
     variable pass        : out boolean;
     constant expr        : in  bit;
     constant msg         : in  string                 := check_result_tag_c;
-    constant level       : in  log_level_or_default_t := no_level;
+    constant level       : in  log_level_t := null_log_level;
     constant context_msg : in  string                 := "";
     constant line_num    : in  natural                := 0;
     constant file_name   : in  string                 := "");
@@ -816,7 +817,7 @@ package check_pkg is
   impure function check_relation(
     constant expr        : in bit;
     constant msg         : in string                 := check_result_tag_c;
-    constant level       : in log_level_or_default_t := no_level;
+    constant level       : in log_level_t := null_log_level;
     constant context_msg : in string                 := "";
     constant line_num    : in natural                := 0;
     constant file_name   : in string                 := "")
@@ -829,7 +830,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -838,7 +839,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -848,7 +849,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -857,7 +858,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -865,7 +866,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -874,7 +875,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in natural;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -883,7 +884,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in natural;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -893,7 +894,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in natural;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -902,7 +903,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in natural;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -910,7 +911,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in natural;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -919,7 +920,7 @@ package check_pkg is
     constant got             : in natural;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -928,7 +929,7 @@ package check_pkg is
     constant got             : in natural;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -938,7 +939,7 @@ package check_pkg is
     constant got             : in natural;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -947,7 +948,7 @@ package check_pkg is
     constant got             : in natural;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -955,7 +956,7 @@ package check_pkg is
     constant got             : in natural;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -964,7 +965,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -973,7 +974,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -983,7 +984,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -992,7 +993,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1000,7 +1001,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1009,7 +1010,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1018,7 +1019,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1028,7 +1029,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1037,7 +1038,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1045,7 +1046,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1054,7 +1055,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1063,7 +1064,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1073,7 +1074,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1082,7 +1083,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1090,7 +1091,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1099,7 +1100,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in natural;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1108,7 +1109,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in natural;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1118,7 +1119,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in natural;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1127,7 +1128,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in natural;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1135,7 +1136,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in natural;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1144,7 +1145,7 @@ package check_pkg is
     constant got             : in natural;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1153,7 +1154,7 @@ package check_pkg is
     constant got             : in natural;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1163,7 +1164,7 @@ package check_pkg is
     constant got             : in natural;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1172,7 +1173,7 @@ package check_pkg is
     constant got             : in natural;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1180,7 +1181,7 @@ package check_pkg is
     constant got             : in natural;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1189,7 +1190,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1198,7 +1199,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1208,7 +1209,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1217,7 +1218,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1225,7 +1226,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1234,7 +1235,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in integer;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1243,7 +1244,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in integer;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1253,7 +1254,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in integer;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1262,7 +1263,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in integer;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1270,7 +1271,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in integer;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1279,7 +1280,7 @@ package check_pkg is
     constant got             : in integer;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1288,7 +1289,7 @@ package check_pkg is
     constant got             : in integer;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1298,7 +1299,7 @@ package check_pkg is
     constant got             : in integer;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1307,7 +1308,7 @@ package check_pkg is
     constant got             : in integer;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1315,7 +1316,7 @@ package check_pkg is
     constant got             : in integer;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1324,7 +1325,7 @@ package check_pkg is
     constant got             : in integer;
     constant expected        : in integer;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1333,7 +1334,7 @@ package check_pkg is
     constant got             : in integer;
     constant expected        : in integer;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1343,7 +1344,7 @@ package check_pkg is
     constant got             : in integer;
     constant expected        : in integer;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1352,7 +1353,7 @@ package check_pkg is
     constant got             : in integer;
     constant expected        : in integer;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1360,7 +1361,7 @@ package check_pkg is
     constant got             : in integer;
     constant expected        : in integer;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1369,7 +1370,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1378,7 +1379,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1388,7 +1389,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1397,7 +1398,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1405,7 +1406,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1414,7 +1415,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in boolean;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1423,7 +1424,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in boolean;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1433,7 +1434,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in boolean;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1442,7 +1443,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in boolean;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1450,7 +1451,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in boolean;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1459,7 +1460,7 @@ package check_pkg is
     constant got             : in boolean;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1468,7 +1469,7 @@ package check_pkg is
     constant got             : in boolean;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1478,7 +1479,7 @@ package check_pkg is
     constant got             : in boolean;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1487,7 +1488,7 @@ package check_pkg is
     constant got             : in boolean;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1495,7 +1496,7 @@ package check_pkg is
     constant got             : in boolean;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1504,7 +1505,7 @@ package check_pkg is
     constant got             : in boolean;
     constant expected        : in boolean;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1513,7 +1514,7 @@ package check_pkg is
     constant got             : in boolean;
     constant expected        : in boolean;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1523,7 +1524,7 @@ package check_pkg is
     constant got             : in boolean;
     constant expected        : in boolean;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1532,7 +1533,7 @@ package check_pkg is
     constant got             : in boolean;
     constant expected        : in boolean;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1540,7 +1541,7 @@ package check_pkg is
     constant got             : in boolean;
     constant expected        : in boolean;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1549,7 +1550,7 @@ package check_pkg is
     constant got             : in string;
     constant expected        : in string;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1558,7 +1559,7 @@ package check_pkg is
     constant got             : in string;
     constant expected        : in string;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1568,7 +1569,7 @@ package check_pkg is
     constant got             : in string;
     constant expected        : in string;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1577,7 +1578,7 @@ package check_pkg is
     constant got             : in string;
     constant expected        : in string;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1585,7 +1586,7 @@ package check_pkg is
     constant got             : in string;
     constant expected        : in string;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1594,7 +1595,7 @@ package check_pkg is
     constant got             : in time;
     constant expected        : in time;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1603,7 +1604,7 @@ package check_pkg is
     constant got             : in time;
     constant expected        : in time;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1613,7 +1614,7 @@ package check_pkg is
     constant got             : in time;
     constant expected        : in time;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1622,7 +1623,7 @@ package check_pkg is
     constant got             : in time;
     constant expected        : in time;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1630,7 +1631,7 @@ package check_pkg is
     constant got             : in time;
     constant expected        : in time;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1642,7 +1643,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1651,7 +1652,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1661,7 +1662,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1670,7 +1671,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1678,7 +1679,7 @@ package check_pkg is
     constant got             : in unsigned;
     constant expected        : in unsigned;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1687,7 +1688,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1696,7 +1697,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1706,7 +1707,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1715,7 +1716,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1723,7 +1724,7 @@ package check_pkg is
     constant got             : in std_logic_vector;
     constant expected        : in std_logic_vector;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1732,7 +1733,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1741,7 +1742,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1751,7 +1752,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1760,7 +1761,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1768,7 +1769,7 @@ package check_pkg is
     constant got             : in signed;
     constant expected        : in signed;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
@@ -1777,7 +1778,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1786,7 +1787,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1796,7 +1797,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1805,7 +1806,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "");
 
@@ -1813,7 +1814,7 @@ package check_pkg is
     constant got             : in std_logic;
     constant expected        : in std_logic;
     constant msg             : in string := check_result_tag_c;
-    constant level           : in log_level_or_default_t := no_level;
+    constant level           : in log_level_t := null_log_level;
     constant line_num        : in natural     := 0;
     constant file_name       : in string      := "")
     return boolean;
